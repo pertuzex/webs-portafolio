@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pertuzex.github.io/webs-portafolio/sitemap.xml
