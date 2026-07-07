@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giolor — Perfumería | Fragancias de autor y grandes marcas</title>
+<meta name="description" content="Giolor, perfumería: fragancias para ella, para él, nicho y sets de regalo. Asesoría personalizada y encargos por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noche:#0f0c10; --ciruela:#191218; --panel:#211823;
+  --oro:#c9a24b; --oro-claro:#e6c987; --rosa:#c98a86;
+  --marfil:#f4ece0; --humo:#b4a79c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--noche);color:var(--marfil);line-height:1.7;font-weight:300}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.01em}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 6vw;background:rgba(15,12,16,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,162,75,.18)}
+.logo{font-family:'Cormorant Garamond';font-weight:600;font-size:1.7rem;letter-spacing:.14em}
+.logo span{color:var(--oro)}
+.nav-links{display:flex;gap:2.4rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.18em;font-weight:400}
+.nav-links a{color:var(--humo);transition:color .2s}
+.nav-links a:hover{color:var(--oro-claro)}
+.nav-cta{border:1px solid var(--oro);color:var(--oro-claro);padding:.5rem 1.3rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;transition:.2s}
+.nav-cta:hover{background:var(--oro);color:var(--noche)}
+.burger{display:none;background:none;border:none;color:var(--marfil);font-size:1.6rem;cursor:pointer}
+
+.hero{min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;isolation:isolate;padding:6rem 6vw 4rem}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:url('assets/hero.jpg') center/cover no-repeat}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at center,rgba(15,12,16,.72),rgba(15,12,16,.93))}
+.hero-inner{max-width:720px}
+.hero .kicker{color:var(--oro);font-size:.8rem;text-transform:uppercase;letter-spacing:.4em;margin-bottom:1.6rem;font-weight:400}
+.hero h1{font-size:clamp(2.8rem,8vw,5.5rem);line-height:1.05}
+.hero h1 em{font-style:italic;color:var(--oro-claro)}
+.hero p{margin:1.6rem auto 2.6rem;color:var(--humo);font-size:1.12rem;max-width:52ch}
+.btn{display:inline-block;padding:1rem 2.6rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.18em;transition:.25s;font-weight:400}
+.btn-oro{background:var(--oro);color:var(--noche)}
+.btn-oro:hover{background:var(--oro-claro);transform:translateY(-2px)}
+.btn-linea{border:1px solid rgba(244,236,224,.4);margin-left:.6rem;color:var(--marfil)}
+.btn-linea:hover{border-color:var(--oro);color:var(--oro-claro)}
+
+section{padding:6.5rem 6vw}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 3.5rem}
+.sec-head .kicker{color:var(--oro);font-size:.75rem;text-transform:uppercase;letter-spacing:.35em}
+.sec-head h2{font-size:clamp(2.2rem,5vw,3.4rem);margin-top:.6rem}
+.sec-head p{color:var(--humo);margin-top:.9rem}
+.divisor{width:52px;height:1px;background:var(--oro);margin:1.4rem auto 0}
+
+/* CATEGORIAS */
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem}
+.cat{position:relative;border:1px solid rgba(201,162,75,.2);padding:2.6rem 1.6rem;text-align:center;transition:.3s;overflow:hidden;background:var(--ciruela)}
+.cat::before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(201,162,75,.08),transparent);opacity:0;transition:.3s}
+.cat:hover{border-color:var(--oro);transform:translateY(-5px)}
+.cat:hover::before{opacity:1}
+.cat .ico{font-family:'Cormorant Garamond';font-style:italic;font-size:2.4rem;color:var(--oro);margin-bottom:.6rem}
+.cat h3{font-size:1.5rem;position:relative}
+.cat p{color:var(--humo);font-size:.88rem;margin-top:.4rem;position:relative}
+
+/* CATALOGO */
+#catalogo{background:var(--ciruela)}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem;max-width:1000px;margin:0 auto}
+.fragancia{background:var(--panel);border:1px solid rgba(201,162,75,.14);padding:2rem 1.9rem;transition:.3s;position:relative}
+.fragancia:hover{border-color:rgba(201,162,75,.5);transform:translateY(-4px)}
+.fragancia .familia{font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--rosa)}
+.fragancia h3{font-size:1.7rem;margin:.3rem 0 .1rem}
+.fragancia .notas{color:var(--humo);font-size:.9rem;font-style:italic;font-family:'Cormorant Garamond';font-size:1.05rem}
+.fragancia .pie{display:flex;justify-content:space-between;align-items:baseline;margin-top:1.4rem;padding-top:1.1rem;border-top:1px solid rgba(201,162,75,.14)}
+.fragancia .precio{font-family:'Cormorant Garamond';font-size:1.7rem;color:var(--oro-claro)}
+.fragancia .ml{font-size:.78rem;color:var(--humo);letter-spacing:.1em}
+.nota-catalogo{text-align:center;color:var(--humo);font-size:.9rem;margin-top:2.4rem;font-style:italic}
+
+/* ASESORIA / BANDA */
+.banda{position:relative;isolation:isolate;text-align:center;padding:7rem 6vw}
+.banda::before{content:"";position:absolute;inset:0;z-index:-2;background:url('assets/accent.jpg') center/cover no-repeat;filter:saturate(.9)}
+.banda::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(15,12,16,.82),rgba(15,12,16,.88))}
+.banda h2{font-size:clamp(2rem,5vw,3.2rem);max-width:720px;margin:0 auto 1rem}
+.banda h2 em{font-style:italic;color:var(--oro-claro)}
+.banda p{color:var(--humo);max-width:56ch;margin:0 auto 2.2rem}
+
+/* SERVICIOS FILA */
+.servs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2.4rem;max-width:960px;margin:0 auto}
+.serv{text-align:center}
+.serv .n{font-family:'Cormorant Garamond';font-style:italic;font-size:2rem;color:var(--oro);display:block;margin-bottom:.5rem}
+.serv h3{font-size:1.4rem;margin-bottom:.4rem}
+.serv p{color:var(--humo);font-size:.9rem}
+
+/* INFO */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;max-width:1000px;margin:0 auto}
+.info-card{border:1px solid rgba(201,162,75,.16);padding:2rem;background:var(--ciruela)}
+.info-card h3{color:var(--oro-claro);font-size:1.4rem;margin-bottom:.9rem}
+.info-card p,.info-card li{color:var(--humo);font-size:.94rem}
+.info-card ul{list-style:none}
+.info-card li{display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:1px dashed rgba(255,255,255,.08)}
+.info-card li b{color:var(--marfil);font-weight:400}
+
+footer{padding:2.6rem 6vw;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid rgba(201,162,75,.18);color:var(--humo);font-size:.82rem}
+
+.wsp{position:fixed;right:1.4rem;bottom:1.4rem;z-index:99;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.5);transition:transform .2s}
+.wsp:hover{transform:scale(1.1)}
+.wsp svg{width:30px;height:30px;fill:#fff}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
+.reveal.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+@media(max-width:840px){
+  .nav-links,.nav-cta{display:none}
+  .burger{display:block}
+  .nav-open .nav-links{display:flex;position:fixed;inset:60px 0 auto 0;flex-direction:column;background:var(--ciruela);padding:1.6rem 6vw;gap:1.3rem;border-bottom:1px solid rgba(201,162,75,.2)}
+  .btn-linea{margin-left:0;margin-top:.8rem}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="logo" href="#">GIO<span>LOR</span></a>
+  <div class="nav-links">
+    <a href="#categorias">Categorías</a>
+    <a href="#catalogo">Fragancias</a>
+    <a href="#asesoria">Asesoría</a>
+    <a href="#contacto">Visítanos</a>
+  </div>
+  <a class="nav-cta" href="https://wa.me/56923950494?text=Hola%20Giolor!%20Quiero%20asesor%C3%ADa%20de%20una%20fragancia" target="_blank">Escríbenos</a>
+  <button class="burger" onclick="document.getElementById('nav').classList.toggle('nav-open')">☰</button>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Perfumería · Fragancias selectas</p>
+    <h1>El aroma que se vuelve <em>tu firma</em>.</h1>
+    <p>Grandes marcas, perfumes de nicho y clásicos que perduran. Te ayudamos a encontrar la fragancia que te representa.</p>
+    <a class="btn btn-oro" href="#catalogo">Ver fragancias</a>
+    <a class="btn btn-linea" href="https://wa.me/56923950494?text=Hola%20Giolor!%20Quiero%20asesor%C3%ADa%20de%20una%20fragancia" target="_blank">Pedir asesoría</a>
+  </div>
+</header>
+
+<section id="categorias">
+  <div class="sec-head reveal">
+    <span class="kicker">Explora</span>
+    <h2>Encuentra tu categoría</h2>
+    <div class="divisor"></div>
+  </div>
+  <div class="cats">
+    <div class="cat reveal"><div class="ico">♀</div><h3>Para Ella</h3><p>Florales, dulces y orientales</p></div>
+    <div class="cat reveal"><div class="ico">♂</div><h3>Para Él</h3><p>Amaderados, cítricos y aromáticos</p></div>
+    <div class="cat reveal"><div class="ico">✦</div><h3>Nicho & Exclusivos</h3><p>Casas de autor, ediciones limitadas</p></div>
+    <div class="cat reveal"><div class="ico">❦</div><h3>Sets de Regalo</h3><p>Estuches listos para sorprender</p></div>
+  </div>
+</section>
+
+<section id="catalogo">
+  <div class="sec-head reveal">
+    <span class="kicker">Selección</span>
+    <h2>Nuestras fragancias destacadas</h2>
+    <p>Una muestra de lo que encuentras en tienda. Consúltanos por tu favorita o pídenos una recomendación.</p>
+    <div class="divisor"></div>
+  </div>
+  <div class="cat-grid">
+    <div class="fragancia reveal">
+      <span class="familia">Floral · Femenino</span>
+      <h3>Aurora</h3>
+      <p class="notas">Peonía, lichi y almizcle blanco</p>
+      <div class="pie"><span class="precio">$44.900</span><span class="ml">Eau de Parfum · 90 ml</span></div>
+    </div>
+    <div class="fragancia reveal">
+      <span class="familia">Amaderado · Masculino</span>
+      <h3>Roble Negro</h3>
+      <p class="notas">Cuero, vetiver y pimienta negra</p>
+      <div class="pie"><span class="precio">$49.900</span><span class="ml">Eau de Parfum · 100 ml</span></div>
+    </div>
+    <div class="fragancia reveal">
+      <span class="familia">Oriental · Unisex</span>
+      <h3>Ámbar 1908</h3>
+      <p class="notas">Ámbar, vainilla y sándalo</p>
+      <div class="pie"><span class="precio">$58.900</span><span class="ml">Nicho · 75 ml</span></div>
+    </div>
+    <div class="fragancia reveal">
+      <span class="familia">Cítrico · Fresco</span>
+      <h3>Costa Azul</h3>
+      <p class="notas">Bergamota, sal marina y cedro</p>
+      <div class="pie"><span class="precio">$39.900</span><span class="ml">Eau de Toilette · 100 ml</span></div>
+    </div>
+    <div class="fragancia reveal">
+      <span class="familia">Dulce · Femenino</span>
+      <h3>Terciopelo</h3>
+      <p class="notas">Frambuesa, praliné y pachulí</p>
+      <div class="pie"><span class="precio">$46.900</span><span class="ml">Eau de Parfum · 80 ml</span></div>
+    </div>
+    <div class="fragancia reveal">
+      <span class="familia">Aromático · Masculino</span>
+      <h3>Brújula</h3>
+      <p class="notas">Lavanda, salvia y haba tonka</p>
+      <div class="pie"><span class="precio">$42.900</span><span class="ml">Eau de Parfum · 100 ml</span></div>
+    </div>
+  </div>
+  <p class="nota-catalogo reveal">¿No ves la que buscas? Trabajamos con decenas de marcas — pregúntanos por WhatsApp.</p>
+</section>
+
+<section class="banda">
+  <h2 class="reveal">¿No sabes cuál elegir? <em>Te asesoramos.</em></h2>
+  <p class="reveal">Cuéntanos qué aromas te gustan, para qué ocasión y tu presupuesto. Te recomendamos la fragancia perfecta — sin costo y sin compromiso.</p>
+  <a class="btn btn-oro reveal" href="https://wa.me/56923950494?text=Hola%20Giolor!%20Quiero%20que%20me%20recomienden%20una%20fragancia" target="_blank">Pedir recomendación</a>
+</section>
+
+<section id="asesoria">
+  <div class="sec-head reveal">
+    <span class="kicker">Por qué Giolor</span>
+    <h2>Más que vender perfume</h2>
+    <div class="divisor"></div>
+  </div>
+  <div class="servs">
+    <div class="serv reveal"><span class="n">I</span><h3>100% originales</h3><p>Solo fragancias auténticas, selladas y con garantía.</p></div>
+    <div class="serv reveal"><span class="n">II</span><h3>Asesoría real</h3><p>Te guiamos según tu piel, tu estilo y la ocasión.</p></div>
+    <div class="serv reveal"><span class="n">III</span><h3>Despacho y retiro</h3><p>Envío a domicilio o retira en tienda el mismo día.</p></div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="sec-head reveal">
+    <span class="kicker">Visítanos</span>
+    <h2>Te esperamos en tienda</h2>
+    <div class="divisor"></div>
+  </div>
+  <div class="info-grid">
+    <div class="info-card reveal">
+      <h3>Horario</h3>
+      <ul>
+        <li>Lunes a Viernes <b>10:00 – 20:00</b></li>
+        <li>Sábado <b>10:00 – 18:00</b></li>
+        <li>Domingo <b>11:00 – 15:00</b></li>
+      </ul>
+    </div>
+    <div class="info-card reveal">
+      <h3>Dónde estamos</h3>
+      <p>[Dirección de la tienda]<br>Santiago, Chile</p>
+      <p style="margin-top:.8rem"><a href="https://maps.google.com/?q=Giolor+perfumeria" target="_blank" style="color:var(--oro-claro)">Ver en Google Maps →</a></p>
+    </div>
+    <div class="info-card reveal">
+      <h3>Pedidos</h3>
+      <p>Consulta stock, encarga tu fragancia o pide asesoría directo por WhatsApp.</p>
+      <p style="margin-top:.8rem"><a href="https://wa.me/56923950494" target="_blank" style="color:var(--oro-claro)">+56 9 2395 0494 →</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Giolor Perfumería — Santiago, Chile</span>
+  <span>Sitio demo diseñado por <b style="color:var(--oro)">CPwebsites</b></span>
+</footer>
+
+<a class="wsp" href="https://wa.me/56923950494" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.6.8 5 2.2 7L4 29l7.2-2.1c1.9 1 4 1.6 6.3 1.6 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-2 0-3.9-.6-5.5-1.6l-.4-.2-4.3 1.2 1.2-4.1-.3-.4C5.6 18.1 5 16.6 5 15 5 9 9.9 4.1 16 4.1S27 9 27 15s-4.9 9.8-11 9.8zm5.5-7.1c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.5.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.5 5.5 4.9.8.3 1.4.5 1.9.7.8.2 1.5.2 2 .1.6-.1 1.8-.7 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
+</a>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('nav-open')));
+</script>
+</body>
+</html>
