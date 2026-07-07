@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nayi Peluquería — Belleza y estilo | Corte, color y tratamientos</title>
+<meta name="description" content="Nayi Peluquería: cortes, color, alisados, tratamientos, manicure y pedicure. Agenda tu hora por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noche:#141013; --carbon:#1e181c; --panel:#261f24;
+  --oro:#c6a15b; --oro-claro:#e5c98b; --rosa:#d9a7a2;
+  --marfil:#f5eee8; --humo:#b3a49b; --marmol:#f3eef0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;font-weight:300;background:var(--noche);color:var(--marfil);line-height:1.7}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 6vw;background:rgba(20,16,19,.85);backdrop-filter:blur(14px);border-bottom:1px solid rgba(198,161,91,.2)}
+.logo{font-family:'Cormorant Garamond';font-weight:600;font-size:1.7rem;letter-spacing:.06em}
+.logo span{color:var(--oro);font-style:italic}
+.nav-links{display:flex;gap:2.3rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;font-weight:400}
+.nav-links a{color:var(--humo);transition:color .2s}
+.nav-links a:hover{color:var(--oro-claro)}
+.nav-cta{background:var(--oro);color:var(--noche);padding:.55rem 1.3rem;border-radius:99px;font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;font-weight:500;transition:.2s}
+.nav-cta:hover{background:var(--oro-claro)}
+.burger{display:none;background:none;border:none;color:var(--marfil);font-size:1.6rem;cursor:pointer}
+
+.hero{min-height:100svh;display:flex;align-items:center;position:relative;isolation:isolate;padding:6rem 6vw 4rem}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:url('assets/hero.jpg') center/cover no-repeat}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(20,16,19,.92) 32%,rgba(20,16,19,.55) 72%,rgba(20,16,19,.72))}
+.hero-inner{max-width:640px}
+.hero .kicker{color:var(--oro);font-size:.8rem;text-transform:uppercase;letter-spacing:.34em;margin-bottom:1.3rem;font-weight:400}
+.hero h1{font-size:clamp(2.7rem,7vw,5rem);line-height:1.04}
+.hero h1 em{font-style:italic;color:var(--oro-claro)}
+.hero p{margin:1.5rem 0 2.4rem;color:var(--humo);font-size:1.1rem;max-width:46ch}
+.btn{display:inline-block;padding:1rem 2.5rem;border-radius:99px;font-size:.8rem;text-transform:uppercase;letter-spacing:.15em;font-weight:400;transition:.25s}
+.btn-oro{background:var(--oro);color:var(--noche)}
+.btn-oro:hover{background:var(--oro-claro);transform:translateY(-2px)}
+.btn-linea{border:1px solid rgba(245,238,232,.4);margin-left:.6rem;color:var(--marfil)}
+.btn-linea:hover{border-color:var(--oro);color:var(--oro-claro)}
+
+section{padding:6rem 6vw}
+.sec-head{text-align:center;max-width:620px;margin:0 auto 3.4rem}
+.sec-head .kicker{color:var(--oro);font-size:.75rem;text-transform:uppercase;letter-spacing:.32em}
+.sec-head h2{font-size:clamp(2.1rem,5vw,3.2rem);margin-top:.5rem}
+.sec-head p{color:var(--humo);margin-top:.8rem}
+.divisor{width:50px;height:1px;background:var(--oro);margin:1.3rem auto 0}
+
+/* SERVICIOS */
+#servicios{background:var(--carbon)}
+.serv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;max-width:1040px;margin:0 auto}
+.serv{background:var(--panel);border:1px solid rgba(198,161,91,.14);padding:1.7rem 1.6rem;transition:.25s;display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.serv:hover{border-color:var(--oro);transform:translateY(-3px)}
+.serv h3{font-size:1.35rem;font-weight:500}
+.serv .desc{color:var(--humo);font-size:.82rem;margin-top:.2rem;font-family:'Jost'}
+.serv .precio{font-family:'Cormorant Garamond';font-size:1.35rem;color:var(--oro-claro);white-space:nowrap}
+.serv-nota{text-align:center;color:var(--humo);font-size:.88rem;margin-top:2.2rem;font-style:italic;font-family:'Cormorant Garamond';font-size:1.05rem}
+
+/* GALERIA */
+.galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;max-width:1080px;margin:0 auto}
+.galeria figure{position:relative;overflow:hidden;aspect-ratio:3/4}
+.galeria img{width:100%;height:100%;object-fit:cover;transition:transform .55s}
+.galeria figure:hover img{transform:scale(1.06)}
+.galeria figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.8rem 1.1rem 1rem;background:linear-gradient(transparent,rgba(20,16,19,.85));font-family:'Cormorant Garamond';font-style:italic;font-size:1.2rem;color:var(--oro-claro)}
+
+/* BANDA */
+.banda{position:relative;isolation:isolate;text-align:center;padding:7rem 6vw}
+.banda::before{content:"";position:absolute;inset:0;z-index:-2;background:url('assets/salon.jpg') center/cover no-repeat}
+.banda::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(20,16,19,.85),rgba(20,16,19,.9))}
+.banda h2{font-size:clamp(2rem,5vw,3.1rem);max-width:680px;margin:0 auto 1rem}
+.banda h2 em{font-style:italic;color:var(--oro-claro)}
+.banda p{color:var(--humo);max-width:52ch;margin:0 auto 2.2rem}
+
+/* MARCAS */
+#marcas{background:var(--carbon);text-align:center}
+.marcas-row{display:flex;flex-wrap:wrap;justify-content:center;gap:2.4rem;align-items:center;max-width:800px;margin:1.5rem auto 0}
+.marca{font-family:'Cormorant Garamond';font-size:1.5rem;letter-spacing:.14em;color:var(--humo);text-transform:uppercase}
+
+/* INFO */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.1rem;max-width:1040px;margin:0 auto}
+.info-card{border:1px solid rgba(198,161,91,.16);padding:2rem;background:var(--carbon)}
+.info-card h3{color:var(--oro-claro);font-size:1.35rem;margin-bottom:.9rem}
+.info-card p,.info-card li{color:var(--humo);font-size:.93rem}
+.info-card ul{list-style:none}
+.info-card li{display:flex;justify-content:space-between;padding:.32rem 0;border-bottom:1px dashed rgba(255,255,255,.08)}
+.info-card li b{color:var(--marfil);font-weight:400}
+
+footer{padding:2.5rem 6vw;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid rgba(198,161,91,.18);color:var(--humo);font-size:.82rem}
+
+.wsp{position:fixed;right:1.4rem;bottom:1.4rem;z-index:99;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.5);transition:transform .2s}
+.wsp:hover{transform:scale(1.1)}
+.wsp svg{width:30px;height:30px;fill:#fff}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
+.reveal.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+@media(max-width:840px){
+  .nav-links,.nav-cta{display:none}
+  .burger{display:block}
+  .nav-open .nav-links{display:flex;position:fixed;inset:60px 0 auto 0;flex-direction:column;background:var(--carbon);padding:1.6rem 6vw;gap:1.3rem;border-bottom:1px solid rgba(198,161,91,.2)}
+  .btn-linea{margin-left:0;margin-top:.8rem}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="logo" href="#">Nayi <span>Peluquería</span></a>
+  <div class="nav-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#galeria">Galería</a>
+    <a href="#marcas">Marcas</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <a class="nav-cta" href="https://wa.me/56923950494?text=Hola%20Nayi!%20Quiero%20agendar%20una%20hora" target="_blank">Agendar</a>
+  <button class="burger" onclick="document.getElementById('nav').classList.toggle('nav-open')">☰</button>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Peluquería &amp; Belleza · Local D-5</p>
+    <h1>Realza tu <em>belleza natural</em>.</h1>
+    <p>Corte, color, alisados y tratamientos con productos profesionales. Un espacio pensado para que salgas sintiéndote increíble.</p>
+    <a class="btn btn-oro" href="https://wa.me/56923950494?text=Hola%20Nayi!%20Quiero%20agendar%20una%20hora" target="_blank">Agenda por WhatsApp</a>
+    <a class="btn btn-linea" href="#servicios">Ver servicios</a>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="sec-head reveal">
+    <span class="kicker">Servicios</span>
+    <h2>Todo para tu cabello</h2>
+    <div class="divisor"></div>
+  </div>
+  <div class="serv-grid">
+    <div class="serv reveal"><div><h3>Corte Dama</h3><p class="desc">Lavado, corte y peinado</p></div><span class="precio">$12.000</span></div>
+    <div class="serv reveal"><div><h3>Corte Varones</h3><p class="desc">Corte y terminación</p></div><span class="precio">$8.000</span></div>
+    <div class="serv reveal"><div><h3>Corte Niños</h3><p class="desc">Con toda la paciencia</p></div><span class="precio">$7.000</span></div>
+    <div class="serv reveal"><div><h3>Color</h3><p class="desc">Tintura completa</p></div><span class="precio">desde $25.000</span></div>
+    <div class="serv reveal"><div><h3>Reflejos / Visos</h3><p class="desc">Mechas y iluminación</p></div><span class="precio">desde $35.000</span></div>
+    <div class="serv reveal"><div><h3>Alisado</h3><p class="desc">Alisado profesional</p></div><span class="precio">desde $30.000</span></div>
+    <div class="serv reveal"><div><h3>Tratamiento Botox</h3><p class="desc">Nutrición profunda</p></div><span class="precio">desde $28.000</span></div>
+    <div class="serv reveal"><div><h3>Brushing</h3><p class="desc">Peinado y ondas</p></div><span class="precio">$10.000</span></div>
+    <div class="serv reveal"><div><h3>Barba</h3><p class="desc">Perfilado y arreglo</p></div><span class="precio">$6.000</span></div>
+    <div class="serv reveal"><div><h3>Manicure</h3><p class="desc">Manos impecables</p></div><span class="precio">$12.000</span></div>
+    <div class="serv reveal"><div><h3>Pedicure</h3><p class="desc">Pies cuidados</p></div><span class="precio">$14.000</span></div>
+    <div class="serv reveal"><div><h3>Maquillaje</h3><p class="desc">Para tu evento</p></div><span class="precio">desde $18.000</span></div>
+  </div>
+  <p class="serv-nota reveal">Valores referenciales. Escríbenos para una cotización según tu cabello.</p>
+</section>
+
+<section id="galeria">
+  <div class="sec-head reveal">
+    <span class="kicker">Nuestro trabajo</span>
+    <h2>Resultados que hablan</h2>
+    <div class="divisor"></div>
+  </div>
+  <div class="galeria">
+    <figure class="reveal"><img src="assets/salon.jpg" alt="Interior de Nayi Peluquería" loading="lazy"><figcaption>Nuestro salón</figcaption></figure>
+    <figure class="reveal"><img src="assets/lavado.jpg" alt="Lavado y tratamiento capilar" loading="lazy"><figcaption>Tratamientos</figcaption></figure>
+    <figure class="reveal"><img src="assets/estilo.jpg" alt="Estaciones de peinado" loading="lazy"><figcaption>Corte &amp; estilo</figcaption></figure>
+  </div>
+</section>
+
+<section class="banda">
+  <h2 class="reveal">Tu cambio de look te está <em>esperando</em>.</h2>
+  <p class="reveal">Agenda tu hora por WhatsApp y llega directo a tu turno, sin esperas.</p>
+  <a class="btn btn-oro reveal" href="https://wa.me/56923950494?text=Hola%20Nayi!%20Quiero%20agendar%20una%20hora" target="_blank">Agendar ahora</a>
+</section>
+
+<section id="marcas">
+  <div class="sec-head reveal">
+    <span class="kicker">Calidad profesional</span>
+    <h2>Trabajamos con las mejores marcas</h2>
+    <div class="divisor"></div>
+  </div>
+  <div class="marcas-row reveal">
+    <span class="marca">Kérastase</span>
+    <span class="marca">L'Oréal</span>
+    <span class="marca">Redken</span>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="sec-head reveal">
+    <span class="kicker">Visítanos</span>
+    <h2>Te esperamos</h2>
+    <div class="divisor"></div>
+  </div>
+  <div class="info-grid">
+    <div class="info-card reveal">
+      <h3>Horario</h3>
+      <ul>
+        <li>Lunes a Viernes <b>10:00 – 20:00</b></li>
+        <li>Sábado <b>10:00 – 18:00</b></li>
+        <li>Domingo <b>Cerrado</b></li>
+      </ul>
+    </div>
+    <div class="info-card reveal">
+      <h3>Ubicación</h3>
+      <p>Local D-5<br>[Dirección de la galería]<br>Santiago, Chile</p>
+      <p style="margin-top:.7rem"><a href="https://www.instagram.com/nayipeluqueria" target="_blank" style="color:var(--oro-claro)">@nayipeluqueria →</a></p>
+    </div>
+    <div class="info-card reveal">
+      <h3>Reservas</h3>
+      <p>Agenda tu hora por WhatsApp y te confirmamos al tiro.</p>
+      <p style="margin-top:.7rem"><a href="https://wa.me/56923950494" target="_blank" style="color:var(--oro-claro)">Escríbenos →</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Nayi Peluquería — Santiago, Chile</span>
+  <span>Sitio demo diseñado por <b style="color:var(--oro)">CPwebsites</b></span>
+</footer>
+
+<a class="wsp" href="https://wa.me/56923950494" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.6.8 5 2.2 7L4 29l7.2-2.1c1.9 1 4 1.6 6.3 1.6 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-2 0-3.9-.6-5.5-1.6l-.4-.2-4.3 1.2 1.2-4.1-.3-.4C5.6 18.1 5 16.6 5 15 5 9 9.9 4.1 16 4.1S27 9 27 15s-4.9 9.8-11 9.8zm5.5-7.1c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.5.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.5 5.5 4.9.8.3 1.4.5 1.9.7.8.2 1.5.2 2 .1.6-.1 1.8-.7 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
+</a>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('nav-open')));
+</script>
+</body>
+</html>
