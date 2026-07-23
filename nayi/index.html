@@ -105,7 +105,15 @@ footer{padding:2.5rem 6vw;display:flex;justify-content:space-between;gap:1rem;fl
   .burger{display:block}
   .nav-open .nav-links{display:flex;position:fixed;inset:60px 0 auto 0;flex-direction:column;background:var(--carbon);padding:1.6rem 6vw;gap:1.3rem;border-bottom:1px solid rgba(198,161,91,.2)}
   .btn-linea{margin-left:0;margin-top:.8rem}
+  .reserva{grid-template-columns:1fr;padding:1.8rem}
 }
+#reservar{background:var(--carbon)}
+.reserva{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;background:var(--panel);border:1px solid rgba(198,161,91,.16);padding:2.4rem}
+.reserva label{display:flex;flex-direction:column;gap:.5rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--oro);font-weight:400}
+.reserva label:first-child{grid-column:1/-1}
+.reserva select{background:var(--noche);color:var(--marfil);border:1px solid rgba(198,161,91,.28);padding:.85rem .9rem;font-family:'Jost',sans-serif;font-size:.95rem;border-radius:4px;cursor:pointer;transition:border-color .2s}
+.reserva select:focus{outline:none;border-color:var(--oro)}
+.reserva button{grid-column:1/-1;border:none;cursor:pointer;font-family:'Jost',sans-serif;width:100%}
 </style>
 </head>
 <body>
@@ -114,8 +122,8 @@ footer{padding:2.5rem 6vw;display:flex;justify-content:space-between;gap:1rem;fl
   <a class="logo" href="#">Nayi <span>Peluquería</span></a>
   <div class="nav-links">
     <a href="#servicios">Servicios</a>
+    <a href="#reservar">Reservar</a>
     <a href="#galeria">Galería</a>
-    <a href="#marcas">Marcas</a>
     <a href="#contacto">Contacto</a>
   </div>
   <a class="nav-cta" href="https://wa.me/56923950494?text=Hola%20Nayi!%20Quiero%20agendar%20una%20hora" target="_blank">Agendar</a>
@@ -153,6 +161,49 @@ footer{padding:2.5rem 6vw;display:flex;justify-content:space-between;gap:1rem;fl
     <div class="serv reveal"><div><h3>Maquillaje</h3><p class="desc">Para tu evento</p></div><span class="precio">desde $18.000</span></div>
   </div>
   <p class="serv-nota reveal">Valores referenciales. Escríbenos para una cotización según tu cabello.</p>
+</section>
+
+<section id="reservar">
+  <div class="sec-head reveal">
+    <span class="kicker">Reserva de horas</span>
+    <h2>Reserva tu hora online</h2>
+    <div class="divisor"></div>
+    <p>Elige tu servicio, día y hora. Te enviamos directo a WhatsApp para confirmar tu reserva al instante.</p>
+  </div>
+  <form class="reserva reveal" onsubmit="return reservar(event)">
+    <label>Servicio
+      <select id="r-servicio" required>
+        <option value="" disabled selected>Elige un servicio</option>
+        <option>Corte Dama</option>
+        <option>Corte Varones</option>
+        <option>Corte Niños</option>
+        <option>Color</option>
+        <option>Reflejos / Visos</option>
+        <option>Alisado</option>
+        <option>Tratamiento Botox</option>
+        <option>Brushing</option>
+        <option>Barba</option>
+        <option>Manicure</option>
+        <option>Pedicure</option>
+        <option>Maquillaje</option>
+      </select>
+    </label>
+    <label>Día
+      <select id="r-dia" required>
+        <option value="" disabled selected>Elige un día</option>
+      </select>
+    </label>
+    <label>Hora
+      <select id="r-hora" required>
+        <option value="" disabled selected>Elige una hora</option>
+        <option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option>
+        <option>11:00</option><option>11:30</option><option>12:00</option><option>12:30</option>
+        <option>15:00</option><option>15:30</option><option>16:00</option><option>16:30</option>
+        <option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option>
+      </select>
+    </label>
+    <button type="submit" class="btn btn-oro">Reservar por WhatsApp</button>
+  </form>
 </section>
 
 <section id="galeria">
@@ -228,6 +279,31 @@ footer{padding:2.5rem 6vw;display:flex;justify-content:space-between;gap:1rem;fl
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('nav-open')));
+
+// Reserva de horas → arma mensaje de WhatsApp
+(function(){
+  const dias=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  const meses=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  const sel=document.getElementById('r-dia');
+  if(sel){
+    const hoy=new Date();
+    for(let i=1;i<=21;i++){
+      const d=new Date(hoy); d.setDate(hoy.getDate()+i);
+      if(d.getDay()===0) continue; // cerrado domingo
+      const txt=dias[d.getDay()]+' '+d.getDate()+' '+meses[d.getMonth()];
+      const o=document.createElement('option'); o.value=txt; o.textContent=txt; sel.appendChild(o);
+    }
+  }
+})();
+function reservar(e){
+  e.preventDefault();
+  const s=document.getElementById('r-servicio').value;
+  const d=document.getElementById('r-dia').value;
+  const h=document.getElementById('r-hora').value;
+  const msg='Hola Nayi! Quiero reservar una hora:%0A- Servicio: '+encodeURIComponent(s)+'%0A- Día: '+encodeURIComponent(d)+'%0A- Hora: '+encodeURIComponent(h);
+  window.open('https://wa.me/56923950494?text='+msg,'_blank');
+  return false;
+}
 </script>
 </body>
 </html>
