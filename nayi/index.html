@@ -107,6 +107,12 @@ footer{padding:2.5rem 6vw;display:flex;justify-content:space-between;gap:1rem;fl
   .btn-linea{margin-left:0;margin-top:.8rem}
   .reserva{grid-template-columns:1fr;padding:1.8rem}
 }
+.promo-band{padding:4.5rem 6vw;background:var(--noche);text-align:center}
+.promo-inner{max-width:640px;margin:0 auto;border:1px solid var(--oro);padding:3rem 2.4rem;background:linear-gradient(160deg,rgba(198,161,91,.10),rgba(38,31,36,.4))}
+.promo-tag{display:inline-block;font-size:.7rem;text-transform:uppercase;letter-spacing:.28em;color:var(--oro);border:1px solid rgba(198,161,91,.4);padding:.35rem 1rem;border-radius:99px;margin-bottom:1.3rem}
+.promo-inner h2{font-family:'Cormorant Garamond';font-size:clamp(1.8rem,4vw,2.6rem);color:var(--marfil);line-height:1.2}
+.promo-inner h2 em{font-style:normal;color:var(--oro-claro);font-weight:600}
+.promo-inner p{color:var(--humo);margin:1rem 0 1.8rem;font-size:.95rem}
 #reservar{background:var(--carbon)}
 .reserva{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;background:var(--panel);border:1px solid rgba(198,161,91,.16);padding:2.4rem}
 .reserva label{display:flex;flex-direction:column;gap:.5rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--oro);font-weight:400}
@@ -163,6 +169,15 @@ footer{padding:2.5rem 6vw;display:flex;justify-content:space-between;gap:1rem;fl
   <p class="serv-nota reveal">Valores referenciales. Escríbenos para una cotización según tu cabello.</p>
 </section>
 
+<section class="promo-band">
+  <div class="promo-inner reveal">
+    <span class="promo-tag">Promo de la semana</span>
+    <h2>Martes y Miércoles · Lavado + Manos <em>$25.000</em></h2>
+    <p>Regalonéate a mitad de semana. Promoción válida solo martes y miércoles.</p>
+    <a class="btn btn-oro" href="https://wa.me/56923950494?text=Hola%20Nayi!%20Quiero%20la%20promo%20Lavado%20%2B%20Manos%20de%20%2425.000" target="_blank">Reservar la promo</a>
+  </div>
+</section>
+
 <section id="reservar">
   <div class="sec-head reveal">
     <span class="kicker">Reserva de horas</span>
@@ -174,6 +189,7 @@ footer{padding:2.5rem 6vw;display:flex;justify-content:space-between;gap:1rem;fl
     <label>Servicio
       <select id="r-servicio" required>
         <option value="" disabled selected>Elige un servicio</option>
+        <option>Promo Lavado + Manos (Mar/Mié · $25.000)</option>
         <option>Corte Dama</option>
         <option>Corte Varones</option>
         <option>Corte Niños</option>
